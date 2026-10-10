@@ -3,6 +3,8 @@ fn main()
   println!("Hello RUST!");
 }
 
+// ig rust syntax is pretty energetic ><
+
 // to compile we use rustc filename.rs
 // execution is similar to C, ./filename
 
