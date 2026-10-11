@@ -5,7 +5,7 @@ fn main()
 
 // ig rust syntax is pretty energetic ><
 
-// to compile we use rustc filename.rs
+// to compile we use "rustc filename.rs" or "rustc -o a filename.rs", ig you already know what -o means, it is output the filename as 'a', it just to ./a
 // execution is similar to C, ./filename
 
 // on different way, you can use cargo to create project folder
