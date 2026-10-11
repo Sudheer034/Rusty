@@ -14,6 +14,9 @@ fn main()
   // sint's datatype notation is i8, i16. i32, i64, i128
   // uint's datatype notation is u8, u16. u32, u64, u128
 
+  // A small note: when the given number exceeds range of that variable, the rust compiler will not start from 0, but instead
+  // it gives an compilation error, thats a good feature!
+
   let int_var: i8 = 15;
   let u_int_var: u8 = 22;
 
