@@ -10,20 +10,22 @@
 
 //   println!("Tranferred Owner: {}", trans_owner);
 
-//   // well this ownership term works for all datatypes
+//  // well this ownership term works for all datatypes
+    // UPDATE: well, i realised it isn't for all datatypes, like primitive datatypes i meant
+    // they just copy the bytes
 // }
 
 // ------------------------------------------------------------------------------------------
 
-// // OwnerShip-2 : Transferring ownership as reference
+// // OwnerShip-2 : Borrowing ownership as reference
 
 // fn main()
 // {
 //   let owner : String = String::from("Rusty");
-//   let trans_owner : &String = &owner; // we can transfer ownership as reference, but still the original owner is owner variable
+//   let trans_owner : &String = &owner; // we can borrow ownership as reference, but still the original owner is owner variable
 
 //   println!("Original Owner: {}", owner);
-//   println!("Transferred Owner: {}", trans_owner); // transferred owner is depended on owner's ownership
+//   println!("Transferred Owner: {}", trans_owner); // borrowed owner is depended on owner's ownership
 
 //   // Note: owner lives inside the main function, you can pass reference from main function.
 //   //       there is no ownership after main function's
@@ -31,7 +33,7 @@
 
 // ------------------------------------------------------------------------------------------
 
-// OwnerShip-3 : rust recommended method
+// OwnerShip-3 : rust recommended method for borrowing
 
 // fn main()
 // {
