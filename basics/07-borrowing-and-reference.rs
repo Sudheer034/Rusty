@@ -12,16 +12,12 @@
 
 //   let another_name = &mut name; // a mutable borrow for another_name.
 
-//   // [another_name]-->[name]
+//   // [another_name]-->[name], and name is restricted to "&mut name" only until another_name frees out
 
 //   *another_name = String::from("Zang"); // since it is mutable borrow, we dereference to access name's value to change
 
-//   println!("The name: {}", name); // we are printing the owner by taking borrow, and it is an immutable borrow
-//   println!("The another name: {}", another_name); // here for another_name there is conflict to 
-//   // what name we need to call, is it &mut name by declaration or &name from println!() function
-     
-     // [another_name]        [name](mutable during declaring)
-     //                       [name](immutable from println!)
+//   println!("The name: {}", name); // the datatype changed from &mut name to &name, and still another_name is locked it to &mut name, so compilation error
+//   println!("The another name: {}", another_name);
 // }
 
 
@@ -36,7 +32,7 @@ fn main()
 
   // Solution 1
   println!("the Another name: {}", another_name); // for this, [another_name]--> [name](mutable one)
-  println!("the name: {}", name); // [name]--> value
+  println!("the name: {}", name); // [name]--> value, // the lock is gone, we can access immutable borrow with no worries
 
   // Solution 2
   println!("Name: {}", name); // [name]--> value
