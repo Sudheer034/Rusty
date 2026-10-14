@@ -37,3 +37,5 @@ fn main()
   // Solution 2
   println!("Name: {}", name); // [name]--> value
 }
+
+// BIGGEST NOTE: name is locked from `&mut name` until the LAST USE of another_name
