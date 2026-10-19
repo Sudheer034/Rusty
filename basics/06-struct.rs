@@ -12,6 +12,7 @@ impl Blast // impl stands implementation or just method's section for struct
   fn announce(&self)
   {
     println!("The missle {}. Launching in 10s", self.Type);
+    println!("DAMAGE: {}", self.damage);
   }
 
   fn constructor(&self, damage : u32, Type : String) -> Blast // we can have constructor like this 
@@ -49,9 +50,17 @@ fn main()
   missile.announce();
   
   let missile : Blast = missile.constructor(2332, "T101".to_string()); // shadowing here, objects are only initialised first ig
+
+  let t_1 : Blast = Blast {
+    // pasting same object data of missile to here
+    Type : String::from("C-77"),
+    ..missile // Note: if ..missile only exists here, then t_1 takes the ownership of missile
+  };
+
   let t_2 : Blast = constructor(10101, "L-101".to_string());
 
   missile.announce();
+  t_1.announce();
   t_2.announce();
 }
 

@@ -69,7 +69,7 @@ fn main()
   // }
   
   // let home: IpAddrKind = IpAddrKind::V4(String::from("127.0.0.1")); // syntax looks cleaner
-  // let home: IpAddrKind = IpAddrKind::V6(String::from("::1"));
+  // let local: IpAddrKind = IpAddrKind::V6(String::from("::1"));
   
   //----------------------------------------------------------
 
@@ -83,7 +83,42 @@ fn main()
   }
 
   let home: IpAddrKind = IpAddrKind::V4(127, 0, 0, 1); // this also works!
-  let home: IpAddrKind = IpAddrKind::V6(String::from("::1"));
-}
+  let local: IpAddrKind = IpAddrKind::V6(String::from("::1"));
 
-// I wondered how do i get access to the data, which i will update it sooner :)
+  // To access the data inside an enum is by pattern matching in rust +_+
+
+  // match keyword is used to access this variable or enum ig
+
+  // match &home{ // we are borrowing not giving ownership
+    
+  //   // here were match implements
+  //   IpAddrKind::V4(a, b, c, d) => { // ig => means if it exists implement this 
+  //     println!("IP(V4) ADDRESS OF HOME: {a}.{b}.{c}.{d}");
+  //   }
+    
+  //   IpAddrKind::V6(s) => { // since this doesn't exists it doesn't implement it
+  //     println!("IP(V6) ADDRESS OF LOCAL: {s}");
+  //   }
+  // }
+  
+  // match &local{
+
+  //   IpAddrKind::V4(a, b, c, d) => {
+  //     println!("IP(V4) ADDRESS OF HOME: {a}.{b}.{c}.{d}");
+  //   }
+
+  //   IpAddrKind::V6(s) => {
+  //     println!("IP(V6) ADDRESS OF LOCAL: {s}");
+  //   }
+  // } // to be honest, the syntax is more explicit
+
+  // To get over that, we use "if let" keyword to point to a single variable
+
+  if let IpAddrKind::V4(a, b, c, d) = &home {
+    println!("IP ADDRESS OF HOME: {}.{}.{}.{}",a,b,c,d);
+  };
+
+  if let IpAddrKind::V6(s) = &local {
+    println!("IP ADDRESS OF LOCAL: {}", s);
+  };
+}
