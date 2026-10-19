@@ -1,33 +1,59 @@
 // // Basic Struct
 
-// struct Blast // naming skills are bad
-// {
-//   damage : u32, // members syntax
-//   isBlasted : bool,
-//   Type : String
-// }
+struct Blast // naming skills are bad
+{
+  damage : u32, // members syntax
+  isBlasted : bool,
+  Type : String
+}
 
-// impl Blast // impl stands implementation or just method's section for struct
-// {
-//   fn announce(&self)
-//   {
-//     println!("The missle {}. Launching in 10s", self.Type);
-//   }
-// }
+impl Blast // impl stands implementation or just method's section for struct
+{
+  fn announce(&self)
+  {
+    println!("The missle {}. Launching in 10s", self.Type);
+  }
 
-// fn main()
-// {
-//   let missile : Blast = Blast { // initialising object, man i don't know like syntax
-//     damage : 25523,
-//     Type : String::from("A102"),
-//     isBlasted : true
-//   };
+  fn constructor(&self, damage : u32, Type : String) -> Blast // we can have constructor like this 
+  {
+    Blast {
+      damage,
+      Type,
+      isBlasted : true
+    }
+  }
+}
 
-//   // ig C has better syntax for this 
-//   // struct Data data = {.data = 12, .num = 23};
+// or Like this
+  fn constructor(damage : u32, Type : String) -> Blast 
+  {
+    Blast {
+      damage,
+      Type,
+      isBlasted : true
+    }
+  }
 
-//   missile.announce();
-// }
+fn main()
+{
+  let missile : Blast = Blast { // initialising object, man i don't know like syntax
+  // and you cannot initialise the object again using mutable keyword, but you can use shadowing
+    damage : 25523,
+    Type : String::from("A102"),
+    isBlasted : true
+  };
+
+  // ig C has better syntax for this 
+  // struct Data data = {.data = 12, .num = 23};
+
+  missile.announce();
+  
+  let missile : Blast = missile.constructor(2332, "T101".to_string()); // shadowing here, objects are only initialised first ig
+  let t_2 : Blast = constructor(10101, "L-101".to_string());
+
+  missile.announce();
+  t_2.announce();
+}
 
 // ----------------------------------------------------------------------------
 
@@ -43,3 +69,7 @@
 //   println!("Green in white color: {}", white.1);
 //   println!("Blue in white color: {}", white.2);
 // }
+
+// ----------------------------------------------------------------------------
+
+// Unit-structs i think, thats what they called
